@@ -12,3 +12,24 @@
 1. Create a `.bash_aliases` file with the following `alias run='python3 manage.py runserver'`
 1. To reload the `.bash_aliases` file we need to run `. ~/.bash_aliases`
 1. We need to do django migration before we can run the server so `python3 manage.py migrate`
+1. Run `run`
+1. Add github so `git init`, `git add .`, `git commit`, `git remote add origin https://github.com/danielsky81/django_auth.git` and finally `git push -u origin master`
+1. Create a admin `python3 manage.py createsuperuser`
+
+## Setting up templates
+
+1. Adding `templates` folder to `accounts` app and `index.html` inside that folder
+1. Add new view to the `views.py` file in order to serve the `index.html`
+1. We now need to import the view inside the `urls.py` file like so `from accounts.views import index` and add the url `url(r'$', index),`
+
+## Adding logout functionality
+
+1. Adding `{% url 'logout' %}` inside the Logout anchor tag of my `index.html`
+1. We need to create a new view. Prior to that we import auth so `from django.contrib import auth`. We need to add redirect and reverse to the new logout function `from django.shortcuts import render, redirect, reverse`
+1. We need to add it to the `urls.py` file like this `url(r'^accounts/logout/$', logout, name="logout"),`. We give it a `name="logout"` so we can map it to the `index.html` where it is assigned to the anchor tag. We do the same for index, so `name="index"`. We need to import the logout from the views as well so `from accounts.views import logout`
+
+## Django messages
+
+1. In order to use this functionality we need to import it `from django.contrib import messages`
+1. Then we add it to the logout function `messages.success(request, 'You have successfully been logged out!')`
+1. Last step is to add it to the `settings.py` at the bottom like this `MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'`
