@@ -33,3 +33,19 @@
 1. In order to use this functionality we need to import it `from django.contrib import messages`
 1. Then we add it to the logout function `messages.success(request, 'You have successfully been logged out!')`
 1. Last step is to add it to the `settings.py` at the bottom like this `MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'`
+
+## Adding login functionality and form
+
+1. Same steps like with logout
+1. Creating a `forms.py` file.
+1. Importing forms to `views.py` as follows `from accounts.forms import UserLoginForm`
+1. Django require to add the CSRF (Cross-Site Request Forgery) `{% csrf_token %}` inside the html
+
+## Templates
+
+1. Creating a `base.html` template in the root dir
+1. To guide Django to that dir we need to add the following to the `TEMPLATES` inside the `settings.py` file `'DIRS': [os.path.join(BASE_DIR, 'templates')]`
+
+## Authorization
+
+The `login_required` decorator allows us to redirect users depending on whether or not they're authenticated. We just need to import it as follows `from django.contrib.auth.decorators import login_required` and add `@login_required` together to `views.py`
