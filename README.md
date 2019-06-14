@@ -49,3 +49,24 @@
 ## Authorization
 
 The `login_required` decorator allows us to redirect users depending on whether or not they're authenticated. We just need to import it as follows `from django.contrib.auth.decorators import login_required` and add `@login_required` together to `views.py`
+
+## Password reset via email
+
+We can use console to print out the email required for reset (I think)
+
+`EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'`
+
+or we can use real email via google:
+
+```py
+# settings.py
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+EMAIL_PORT = 587
+```
+
+## Email authentication
+
+Django by default only supports logging in using a username. In order to facilitate an email login we need to build what is called a ***custom authentication back-end***. Authentication back-end is what django uses to authenticate users so we could create authentication backends to only log users in if they knew specific passcode.
