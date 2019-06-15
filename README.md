@@ -70,3 +70,16 @@ EMAIL_PORT = 587
 ## Email authentication
 
 Django by default only supports logging in using a username. In order to facilitate an email login we need to build what is called a ***custom authentication back-end***. Authentication back-end is what django uses to authenticate users so we could create authentication backends to only log users in if they knew specific passcode.
+
+## Add bootstrap plugin 
+
+We need to run the following `sudo pip3 install django_forms_bootstrap` and then add it to the `settings.py` file inside the `INSTALLED_APPS` the following `django_forms_bootstrap`.
+
+Once the above is done, we need to load that plugin inside the page that needs the bootstrap form styles `{% load bootstrap_tags %}` and change the `{{ registration_form.as_p }}` to `{{ registration_form | as_bootstrap }}`
+
+## Add style
+
+1. To add our own `style.css` we need to create a `static` folder in the root directory, then `css` folder inside of it and then add the file itself.
+1. We need to load the `staticfiles` in the `base.html` file `{% load staticfiles %}` and add a link to css in the head `<link rel="stylesheet" href="{% static 'css/style.css' %}">`
+1. We need to specify the path to the `STATICFILES_DIRS` likes such `os.path.join(BASE_DIR, "static")`
+
