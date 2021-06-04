@@ -2,7 +2,7 @@ astroid==2.1.0
 Click==7.0
 coverage==4.5.3
 dj-database-url==0.5.0
-Django==2.2.1
+Django==2.2.21
 django-forms-bootstrap==3.1.0
 dnspython==1.16.0
 Flask==1.0.2
